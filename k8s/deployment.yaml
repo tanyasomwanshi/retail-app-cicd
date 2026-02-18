@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: retail-app
+  template:
+    metadata:
+      labels:
+        app: retail-app
+    spec:
+      containers:
+        - name: retail-app
+          image: tanyasomwanshi/retail-app:latest # <--- MAKE SURE THIS IS CORRECT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
